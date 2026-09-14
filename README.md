@@ -31,7 +31,7 @@ Expanded Catalog: Support for laundry, dry-cleaning, and specialized services (e
 Order Tracking & Communication: Direct status updates and customer notification mechanics.
 Docket Cross-Referencing: Manual ticket-number linking to maintain continuity with existing operations.
 
-# Development Team (Group H) — Central University of Technology
+# Development Team (Group M) — Central University of Technology
 
 | Name | Student Number |
 |---|---|
