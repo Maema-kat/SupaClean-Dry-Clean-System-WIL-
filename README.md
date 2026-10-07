@@ -3,7 +3,7 @@ Official repository for the SupaClean Laundry and Dry-Cleaning Management System
 
 # SupaClean Laundry & Dry-Cleaning Management System 
 
-Welcome to the official repository for the SupaClean Laundry & Dry-Cleaning Management System, a cross-platform digital solution designed to streamline order management, multi-depot coordination, and customer communication for SupaClean.
+Welcome to the official repository for the SupaClean Laundry & Dry-Cleaning Management System, a cross-platform digital solution designed to streamline order management, multi-depot coordination and customer communication for SupaClean.
 
 # Project Overview
 SupaClean currently relies on physical pickup/drop-off points and a manual paper ticket/docket system. This project introduces an integrated digital platform consisting of:
