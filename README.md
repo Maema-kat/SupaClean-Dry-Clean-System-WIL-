@@ -1,48 +1,49 @@
-# SupaClean-Dry-Clean-System-WIL-
-Official repository for the SupaClean Laundry and Dry-Cleaning Management System  featuring project documentation, architecture specs, and system models for the Flutter, ASP.NET Core, and Supabase solution
+# SupaClean — Flutter MVVM Starter
 
-# SupaClean Laundry & Dry-Cleaning Management System 
+Flutter/Dart implementation of the SupaClean designs (splash screen,
+Welcome Back / Login, Create Your Account) using MVVM architecture.
 
-Welcome to the official repository for the SupaClean Laundry & Dry-Cleaning Management System, a cross-platform digital solution designed to streamline order management, multi-depot coordination, and customer communication for SupaClean.
+## Architecture (MVVM)
 
-# Project Overview
-SupaClean currently relies on physical pickup/drop-off points and a manual paper ticket/docket system. This project introduces an integrated digital platform consisting of:
- Mobile Application (Flutter): Allows customers to browse services, submit orders, select pickup depots, and receive order updates and authorized staff,drivers and management to oversee orders,manage customer data and update item statuses.
- Web Application (ASP.NET Core): web application version of the system.
-Backend & Database (Supabase / PostgreSQL):A centralized database providing real-time data sync, secure authentication, and relational storage across web and mobile platforms.
+```
+lib/
+├── main.dart                    # App entry, theme, Provider setup
+├── core/
+│   └── constants.dart           # AppColors, AppStrings
+├── models/
+│   └── user_model.dart          # UserModel (data layer)
+├── viewmodels/
+│   └── auth_viewmodel.dart      # AuthViewModel — validation + auth logic
+├── views/
+│   ├── splash_screen.dart       # Splash → auto-navigates to Login
+│   ├── login_screen.dart        # Welcome Back / Login
+│   └── signup_screen.dart       # Create Your Account
+└── widgets/
+    ├── app_logo.dart            # SupaClean brand text
+    └── primary_button.dart      # Rounded pink button with loading state
+```
 
-The source code directory structure will be initialized following final stakeholder sign-off and architectural design approval. During this initial phase, this repository serves as the central hub for:
-- System Requirements Specifications (SRS)
-- Feasibility Analysis & Risk Assessment
-- Process Workflows & System Models
-- API & Schema Planning
+- **Model** — `UserModel` holds user data (full name, email, phone, password).
+- **ViewModel** — `AuthViewModel` extends `ChangeNotifier`; exposes `isLoading`,
+  `errorMessage`, `currentUser`, plus `login()` and `register()` which validate
+  input and simulate a network call (replace the `Future.delayed` with a real
+  API such as Supabase or Firebase).
+- **View** — screens observe the ViewModel via `provider` (`context.watch` /
+  `context.read`) and contain no business logic.
 
-# Planned Tech Stack
+## Run it
 
-| Component | Technology | Role 
-Mobile Client - Flutter (Dart) | mobile app version of system .
-Web Client - ASP.NET Core MVC / Web API | Customer order submission ,status tracking, notification ,Management dashboard, order tracking, and status administration.
-Backend & DB -Supabase (PostgreSQL & Auth) | Data persistence, authentication, and system communication.
-External APIs - Google Maps API Depot location mapping
+```bash
+flutter create .          # only if starting from an empty folder
+flutter pub get
+flutter run
+```
 
-# Key Features (In Scope MVP)
-Multi-Depot Support: Management across central facility and local pickup/drop-off depots.
-Expanded Catalog: Support for laundry, dry-cleaning, and specialized services (e.g., carpet cleaning).
-Order Tracking & Communication: Direct status updates and customer notification mechanics.
-Docket Cross-Referencing: Manual ticket-number linking to maintain continuity with existing operations.
+## Features
 
-# Development Team (Group M) — Central University of Technology
-
-| Name | Student Number |
-|---|---|
-| Masendeke CP | 224043099 |
-| Mahlangu P | 224014647 |
-| Maleke KT | 222009*** |
-| Maema KE | 224079714 |
-| Mojakwe KB | 223032987 |
-| Moretlwe RK | 221012635 |
-| Dasheka T | 219007064 |
-| Leeu FD | 223044569 |
-| Ntlati TT | 224081629 |
-| Stallenberg BC | 224081442 |
-
+- Splash screen with auto-navigation (3 s)
+- Login screen matching the design (logo, Welcome Back, email + password with
+  show/hide toggle, Forgot Password, LOGIN button, Create Account link)
+- Create Account screen (full name, email, phone, password, confirm password)
+- Form validation with snackbar error messages
+- Loading indicator on buttons during "authentication"
